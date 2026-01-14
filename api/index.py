@@ -3,15 +3,12 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# ---------- MODELS ----------
 class Lead(BaseModel):
     name: str
     source: str
     status: str
 
-
-# ---------- ROUTES ----------
-@app.get("/api/leads")
+@app.get("/leads")   # <- PAS /api/leads
 def get_leads():
     return {
         "leads": [
@@ -21,18 +18,13 @@ def get_leads():
         ]
     }
 
-
-@app.post("/api/score")
+@app.post("/score")  # <- PAS /api/score
 def score_lead(lead: Lead):
     score = 50
-
     if lead.source in ["LinkedIn", "Referral"]:
         score += 20
-
     if "studio" in lead.name.lower():
         score += 10
-
     if lead.status == "Qualified":
         score += 15
-
     return {"score": min(score, 100)}
