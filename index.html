@@ -1,1 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lead Demo (Front + Python API)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Lead Demo</h1>
+      <p>Mini app dynamique (HTML/CSS/JS) + API Python (Vercel).</p>
+    </header>
 
+    <section class="card">
+      <h2>Ajouter un lead</h2>
+      <form id="leadForm" class="form">
+        <input id="name" placeholder="Nom (ex: Studio X)" required />
+        <select id="source">
+          <option>LinkedIn</option>
+          <option>Website</option>
+          <option>Referral</option>
+          <option>Other</option>
+        </select>
+        <select id="status">
+          <option>New</option>
+          <option>Contacted</option>
+          <option>Qualified</option>
+        </select>
+        <button type="submit">Ajouter</button>
+      </form>
+      <p class="hint">Le score est calculé par le back Python.</p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Leads</h2>
+        <input id="search" placeholder="Rechercher..." />
+        <select id="filterStatus">
+          <option value="">Tous</option>
+          <option>New</option>
+          <option>Contacted</option>
+          <option>Qualified</option>
+        </select>
+        <button id="resetDemo" type="button">Reset démo</button>
+      </div>
+
+      <div id="state" class="state"></div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th><th>Nom</th><th>Source</th><th>Status</th><th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </section>
+
+    <footer class="footer">
+      <span>Tip recruteur : essaye d’ajouter un lead + filtrer + recharger la page.</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
